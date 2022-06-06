@@ -1,6 +1,6 @@
 {
   "name": "url-asset-loader",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Use URL Asset Imports on Webpack 4",
   "repository": {
     "type": "git",
