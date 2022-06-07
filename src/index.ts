@@ -17,7 +17,10 @@ const loaderFn = async (
   assert(ctx.target === "web" || ctx.target === "node");
   assert(typeof source === "string");
 
-  const ast = await parseAsync(source, { inputSourceMap: sourceMap });
+  const ast = await parseAsync(source, {
+    inputSourceMap: sourceMap,
+    filename: ctx.resourcePath,
+  });
 
   traverse(ast, {
     NewExpression: transformNewExpression(ctx),
