@@ -25,7 +25,7 @@ document.body.append(el);
 into code that uses the older, bundler-specific construct:
 
 ```js
-import myImageUrl from "./myImage.jpg";
+import myImageUrl from "./myImage.jpg?asset-url";
 
 const el = document.createElement("img");
 el.src = myImageUrl;
@@ -71,9 +71,8 @@ configuration.
          {
            // And now your existing `file-loader` or `url-loader` config
 
-           // Remember to add in here the extensions of the files
-           // you want handled
-           test: /\.(svg|woff|jpe?g|png)$/i,
+           // This resourceQuery will get added to all requested asset urls
+           resourceQuery:/asset-url/
 
            use: {
              loader: "file-loader", // Either `file-loader` or `url-loader`

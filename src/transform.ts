@@ -2,6 +2,7 @@ import template from "@babel/template";
 import type { NodePath } from "@babel/traverse";
 import type { NewExpression } from "@babel/types";
 import assert from "assert";
+import { normalize, sep } from "path";
 import type { loader } from "webpack";
 import { RAW_REQUIRE } from "./index";
 import { isImportMetaUrl } from "./util";
@@ -55,9 +56,11 @@ const transformUrlConstructor = (
     );
   }
 
+  const filePathImport = `.${sep}${normalize(filePath)}?asset-url`;
+
   program.node.body.unshift(
     template.statement.ast`
-      import ${importIdentifier} from "${filePath}"
+      import ${importIdentifier} from "${filePathImport}"
     `
   );
 };
